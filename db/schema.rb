@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_01_17_134212) do
 
-  create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_microposts_on_user_id"
-  end
-
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
     t.string "status"
@@ -37,6 +29,5 @@ ActiveRecord::Schema.define(version: 2020_01_17_134212) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "microposts", "users"
   add_foreign_key "tasks", "users"
 end
