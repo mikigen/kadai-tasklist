@@ -5,7 +5,10 @@
        <%= render 'layouts/error_messages', model: f.object %>
        
         <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+          <tr>
+          <th>status:<%= f.text_area :status, class: 'form-control', rows: 2 %></th>
+          <th>content:<%= f.text_area :content, class: 'form-control', rows: 5 %></th>
+          </tr>
         </div>
         <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
       <% end %>

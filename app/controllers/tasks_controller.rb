@@ -10,6 +10,14 @@ class TasksController < ApplicationController
     end
   end
   
+  def show
+    
+  end
+  
+  def new
+      @task = Task.new
+  end
+  
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
@@ -50,7 +58,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:content, :user_id)
+    params.require(:task).permit(:content, :status)
   end
   
   def correct_user
