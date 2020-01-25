@@ -25,7 +25,7 @@ class TasksController < ApplicationController
     else
       @tasks = current_user.tasks.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
-      render 'tasks/index'
+      render 'tasks/new'
     end
   end
 
@@ -59,7 +59,7 @@ class TasksController < ApplicationController
   def set_task
     @task = current_user.tasks.find_by(id: params[:id])
     unless @task
-      flash[:danger] = "指定したidのタスクは存在しません"
+      flash[:danger] = "タスクは削除しました"
       redirect_to root_url
     end
   end
