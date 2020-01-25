@@ -20,3 +20,9 @@
   <% end %>
   <%= paginate tasks %>
 </ul>
+
+<div class="row">
+    <aside class="col-sm-4">
+      <%= link_to '新規タスクの追加', new_task_path, class: "btn btn-primary" %>
+    </aside>
+  </div>

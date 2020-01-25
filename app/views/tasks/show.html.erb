@@ -1,21 +1,13 @@
 <h1>id: <%= @task.id %> のタスク詳細ページ</h1>
 
-
-
 <table class="table table-bordered">
-
   <tr>
-
     <th>タスク</th>
-    
     <td>status:<%= @task.status %></td>
     <td>content:<%= @task.content %></td>
-    
-
   </tr>
-
 </table>
+
 <%= link_to '一覧に戻る', tasks_path %>
 <%= link_to 'Edit', edit_task_path(@task), class: 'btn btn-light' %>
-
 <%= link_to 'Delete', @task, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
