@@ -1,8 +1,13 @@
 <h1>タスク一覧</h1>
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.content, task %> &gt; <%= task.status %></li> 
+    <li>タスク:<%= link_to task.content, task %>  ,ステータス:<%= task.status %></li> 
   <% end %>  
 </ul>
+
+<%= form_with(model: @task, local: true) do |f| %>
+       <%= render 'layouts/error_messages', model: f.object %>
+       
+      <% end %>
 
 <%= link_to "新規タスクの作成", new_task_path %>
