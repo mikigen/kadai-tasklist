@@ -5,9 +5,5 @@
   <% end %>  
 </ul>
 
-<%= form_with(model: @task, local: true) do |f| %>
-       <%= render 'layouts/error_messages', model: f.object %>
-       
-      <% end %>
 
 <%= link_to "新規タスクの作成", new_task_path %>
