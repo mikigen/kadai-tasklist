@@ -4,8 +4,8 @@ class TasksController < ApplicationController
   
   def index
     if logged_in?
-      @task = current_user.tasks.build  # form_with 用
-      @tasks = current_user.tasks.order(id: :desc).page(params[:page])
+      @task = current_user.tasks.build
+      @tasks = current_user.tasks.order(id: :desc).page(params[:page]).per(10)
     end
   end
   
@@ -20,19 +20,19 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'Taskを投稿しました。'
       redirect_to root_url
     else
       @tasks = current_user.tasks.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'Taskの投稿に失敗しました。'
       render 'tasks/new'
     end
   end
 
   def destroy
     @task.destroy
-    flash[:success] = 'メッセージを削除しました。'
-    redirect_back(fallback_location: root_path)
+    flash[:success] = 'Taskを削除しました。'
+    redirect_to root_url
   end
   
   def edit
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 
     if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
-      redirect_to @task
+      redirect_to root_url
     else
       flash.now[:danger] = 'Task は更新されませんでした'
       render :edit
